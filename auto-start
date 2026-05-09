@@ -1,0 +1,36 @@
+import express from "express";
+import { ethers } from "ethers";
+import fs from "fs";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const app = express();
+app.use(express.json());
+
+const deployed = JSON.parse(fs.readFileSync("../deployed.json"));
+
+const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
+const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+
+const abi = [
+  "function transfer(address to, uint amount)"
+];
+
+const contract = new ethers.Contract(deployed.CCC, abi, wallet);
+
+// envio automático
+app.post("/send", async (req, res) => {
+  const { to, amount } = req.body;
+
+  const tx = await contract.transfer(
+    to,
+    ethers.parseUnits(amount, 18)
+  );
+
+  await tx.wait();
+
+  res.json({ hash: tx.hash });
+});
+
+app.listen(3000, () => console.log("API rodando"));
