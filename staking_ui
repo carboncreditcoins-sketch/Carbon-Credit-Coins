@@ -1,0 +1,3 @@
+async function stake() {
+  await contract.stake(amount);
+}
