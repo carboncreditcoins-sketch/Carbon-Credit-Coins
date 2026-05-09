@@ -1,0 +1,15 @@
+// src/app.js
+import express from "express";
+import { getBalance } from "./services/wallet.js";
+
+const app = express();
+app.use(express.json());
+
+app.get("/balance/:address", async (req, res) => {
+  const balance = await getBalance(req.params.address);
+  res.json({ balance });
+});
+
+app.listen(3001, () => {
+  console.log("API running on port 3001");
+});
