@@ -1,0 +1,8 @@
+ccc-system/
+├── contracts/
+├── scripts/
+├── backend/
+├── frontend/
+├── hardhat.config.js
+├── .env
+└── docker-compose.yml
