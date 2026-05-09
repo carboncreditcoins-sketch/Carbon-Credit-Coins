@@ -1,0 +1,11 @@
+🌐 FRONTEND (APP / WEB)
+                        ↓
+                API GATEWAY (BACKEND)
+                        ↓
+     ┌──────────────┬──────────────┬──────────────┐
+     │ AUTH SERVICE │ TRADING CORE │ WALLET CORE  │
+     └──────────────┴──────────────┴──────────────┘
+                        ↓
+         BLOCKCHAIN + DEX + LIQUIDITY
+                        ↓
+             ORÁCULOS + APIs EXTERNAS
