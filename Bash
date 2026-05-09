@@ -1,0 +1,4 @@
+mkdir ccc-system
+cd ccc-system
+npm init -y
+npm install ethers dotenv express
