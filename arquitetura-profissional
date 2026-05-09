@@ -1,0 +1,11 @@
+Frontend (Next.js)
+        ↓
+Backend API (Node.js)
+        ↓
+Services Layer
+ ├── Wallet Service
+ ├── Trading Engine
+ ├── Blockchain Indexer
+ ├── Payment Gateway
+        ↓
+Blockchain (Ethereum / BSC / etc)
