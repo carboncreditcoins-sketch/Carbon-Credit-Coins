@@ -1,0 +1,19 @@
+"use client";
+import { useEffect, useState } from "react";
+
+export default function Dashboard() {
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/balance/0x...")
+      .then(res => res.json())
+      .then(data => setBalance(data.balance));
+  }, []);
+
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <p>Balance: {balance}</p>
+    </div>
+  );
+}
