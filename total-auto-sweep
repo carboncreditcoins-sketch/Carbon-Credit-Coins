@@ -1,0 +1,20 @@
+import { ethers } from "ethers";
+
+const provider = new ethers.JsonRpcProvider(process.env.RPC);
+const master = process.env.MASTER;
+
+export async function sweep(privateKey) {
+  const wallet = new ethers.Wallet(privateKey, provider);
+
+  const balance = await provider.getBalance(wallet.address);
+
+  if (balance > ethers.parseEther("0.002")) {
+    const tx = await wallet.sendTransaction({
+      to: master,
+      value: balance - ethers.parseEther("0.001")
+    });
+
+    await tx.wait();
+    console.log("Sweep concluído:", tx.hash);
+  }
+}
