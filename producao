@@ -1,0 +1,14 @@
+Frontend (Next.js + Trading UI)
+        ↓
+Backend (Node.js + APIs)
+        ↓
+Services:
+ ├── Deposit Monitor
+ ├── CCC Token Service
+ ├── Trading Engine
+ ├── Staking Engine
+ ├── Admin Panel API
+        ↓
+Blockchain (Ethereum / BSC)
+        ↓
+CCC Token + Master Wallet
