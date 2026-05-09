@@ -1,0 +1,40 @@
+// src/ccc/ccc.service.js
+import { ethers } from "ethers";
+import { provider } from "../web3/provider.js";
+import { CCC_ABI } from "./abi.js";
+
+const TOKEN_ADDRESS = "SEU_CONTRATO_CCC";
+
+export async function getBalance(address) {
+  const contract = new ethers.Contract(
+    TOKEN_ADDRESS,
+    CCC_ABI,
+    provider
+  );
+
+  const balance = await contract.balanceOf(address);
+  const decimals = await contract.decimals();
+
+  return ethers.formatUnits(balance, decimals);
+}
+
+export async function transfer(fromPrivateKey, to, amount) {
+  const wallet = new ethers.Wallet(fromPrivateKey, provider);
+
+  const contract = new ethers.Contract(
+    TOKEN_ADDRESS,
+    CCC_ABI,
+    wallet
+  );
+
+  const decimals = await contract.decimals();
+
+  const tx = await contract.transfer(
+    to,
+    ethers.parseUnits(amount, decimals)
+  );
+
+  await tx.wait();
+
+  return tx.hash;
+}
