@@ -1,0 +1,10 @@
+backend/
+ ├── src/
+ │   ├── controllers/
+ │   ├── services/
+ │   ├── wallets/
+ │   ├── blockchain/
+ │   ├── routes/
+ │   └── app.ts
+ ├── .env
+ └── package.json
