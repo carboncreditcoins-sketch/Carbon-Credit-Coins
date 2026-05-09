@@ -1,0 +1,38 @@
+import { useState } from "react";
+import { connectWallet } from "./wallet";
+import { swapETHtoToken } from "./swap";
+
+export default function Trade() {
+  const [wallet, setWallet] = useState(null);
+  const [amount, setAmount] = useState("");
+
+  async function handleConnect() {
+    const w = await connectWallet();
+    setWallet(w);
+  }
+
+  async function handleSwap() {
+    await swapETHtoToken(
+      wallet.signer,
+      "SEU_TOKEN_CCC",
+      amount
+    );
+  }
+
+  return (
+    <div className="trade">
+      <button onClick={handleConnect}>
+        Conectar Carteira
+      </button>
+
+      <input
+        placeholder="ETH"
+        onChange={(e) => setAmount(e.target.value)}
+      />
+
+      <button onClick={handleSwap}>
+        Comprar CCC
+      </button>
+    </div>
+  );
+}
