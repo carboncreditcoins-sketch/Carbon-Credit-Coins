@@ -1,0 +1,13 @@
+const router = new ethers.Contract(
+  UNISWAP_ROUTER,
+  ABI,
+  signer
+);
+
+await router.swapExactTokensForTokens(
+  amountIn,
+  amountOutMin,
+  [CCC, USDT],
+  user,
+  deadline
+);
