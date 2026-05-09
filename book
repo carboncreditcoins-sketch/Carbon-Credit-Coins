@@ -1,0 +1,29 @@
+// src/trading/orderbook.js
+let buyOrders = [];
+let sellOrders = [];
+
+export function placeOrder(order) {
+  if (order.type === "buy") {
+    buyOrders.push(order);
+  } else {
+    sellOrders.push(order);
+  }
+
+  matchOrders();
+}
+
+function matchOrders() {
+  buyOrders.sort((a, b) => b.price - a.price);
+  sellOrders.sort((a, b) => a.price - b.price);
+
+  if (buyOrders.length && sellOrders.length) {
+    const buy = buyOrders[0];
+    const sell = sellOrders[0];
+
+    if (buy.price >= sell.price) {
+      console.log("Trade executed");
+      buyOrders.shift();
+      sellOrders.shift();
+    }
+  }
+}
