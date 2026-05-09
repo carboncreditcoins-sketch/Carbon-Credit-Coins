@@ -1,0 +1,4 @@
+// monitor deposits
+provider.on("block", async () => {
+  console.log("Checking new deposits...");
+});
