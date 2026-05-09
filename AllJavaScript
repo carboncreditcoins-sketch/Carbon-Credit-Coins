@@ -1,0 +1,7 @@
+async function autoSweep(userWallet) {
+  const balance = await getBalance(userWallet);
+
+  if (balance > 0) {
+    await sendToMaster(userWallet, MASTER_ADDRESS);
+  }
+}
