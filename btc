@@ -1,0 +1,5 @@
+import axios from "axios";
+
+const balance = await axios.get(
+  `https://blockstream.info/api/address/${address}`
+);
