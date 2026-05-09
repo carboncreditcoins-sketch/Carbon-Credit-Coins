@@ -1,0 +1,7 @@
+import { ethers } from "ethers";
+
+const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
+const contract = new ethers.Contract(address, abi, wallet);
+
+// enviar tokens automaticamente
+await contract.transfer(destino, valor);
