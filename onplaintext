@@ -1,0 +1,13 @@
+USUÁRIO
+ ↓
+APP (WEB / MOBILE)
+ ↓
+API BACKEND
+ ↓
+ENGINE (wallets + automação)
+ ↓
+SMART CONTRACT (CCC)
+ ↓
+MASTER WALLET
+ ↓
+BLOCKCHAINS (ETH / BTC / SOL / TRON)
