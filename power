@@ -1,0 +1,20 @@
+import { ethers } from "ethers";
+
+const provider = new ethers.WebSocketProvider(process.env.WS_RPC);
+
+const contract = new ethers.Contract(
+  process.env.CCC_ADDRESS,
+  ["event Transfer(address indexed from, address indexed to, uint256 value)"],
+  provider
+);
+
+contract.on("Transfer", async (from, to, value) => {
+
+  if (to.toLowerCase() === process.env.DEPOSIT_ADDRESS.toLowerCase()) {
+    
+    console.log("Deposit detected:", value.toString());
+
+    // salvar no banco
+  }
+
+});
