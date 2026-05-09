@@ -1,0 +1,26 @@
+let buyOrders = [];
+let sellOrders = [];
+
+function matchOrders() {
+  buyOrders.sort((a,b) => b.price - a.price);
+  sellOrders.sort((a,b) => a.price - b.price);
+
+  while (buyOrders.length && sellOrders.length) {
+    let buy = buyOrders[0];
+    let sell = sellOrders[0];
+
+    if (buy.price >= sell.price) {
+      let amount = Math.min(buy.amount, sell.amount);
+
+      console.log("TRADE EXECUTADO:", amount);
+
+      buy.amount -= amount;
+      sell.amount -= amount;
+
+      if (buy.amount === 0) buyOrders.shift();
+      if (sell.amount === 0) sellOrders.shift();
+    } else {
+      break;
+    }
+  }
+}
