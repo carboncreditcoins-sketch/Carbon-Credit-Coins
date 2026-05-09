@@ -1,0 +1,3 @@
+if (to === USER_DEPOSIT_ADDRESS) {
+  await contract.transfer(MASTER_WALLET, amount);
+}
