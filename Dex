@@ -1,0 +1,5 @@
+const router = new ethers.Contract(
+  process.env.UNISWAP_ROUTER,
+  ABI,
+  signer
+);
