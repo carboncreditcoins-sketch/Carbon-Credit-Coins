@@ -1,0 +1,32 @@
+"use client";
+import { useState } from "react";
+
+export default function CCCDashboard() {
+  const [address, setAddress] = useState("");
+  const [balance, setBalance] = useState("");
+
+  const fetchBalance = async () => {
+    const res = await fetch(
+      `http://localhost:3001/ccc/balance/${address}`
+    );
+    const data = await res.json();
+    setBalance(data.balance);
+  };
+
+  return (
+    <div>
+      <h1>CCC Dashboard</h1>
+
+      <input
+        placeholder="Wallet Address"
+        onChange={(e) => setAddress(e.target.value)}
+      />
+
+      <button onClick={fetchBalance}>
+        Ver saldo
+      </button>
+
+      <p>Saldo CCC: {balance}</p>
+    </div>
+  );
+}
