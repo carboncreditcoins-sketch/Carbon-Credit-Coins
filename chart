@@ -1,0 +1,28 @@
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip
+} from "recharts";
+
+const data = [
+  { name: "1", price: 20000 },
+  { name: "2", price: 21000 },
+  { name: "3", price: 19000 },
+  { name: "4", price: 23000 }
+];
+
+export default function Chart() {
+  return (
+    <div className="chart">
+      <h2>Market Chart</h2>
+      <LineChart width={600} height={300} data={data}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Line type="monotone" dataKey="price" />
+      </LineChart>
+    </div>
+  );
+}
