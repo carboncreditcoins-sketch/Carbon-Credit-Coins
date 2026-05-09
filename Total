@@ -1,0 +1,14 @@
+backend/
+ ├── src/
+ │   ├── api/
+ │   ├── controllers/
+ │   ├── services/
+ │   ├── blockchain/
+ │   ├── wallets/
+ │   ├── sweeper/
+ │   ├── security/
+ │   ├── database/
+ │   └── app.ts
+ ├── prisma/
+ ├── docker-compose.yml
+ └── .env
