@@ -1,0 +1,7 @@
+import { ethers } from "ethers";
+
+export async function connectWallet() {
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  const signer = await provider.getSigner();
+  return signer.getAddress();
+}
