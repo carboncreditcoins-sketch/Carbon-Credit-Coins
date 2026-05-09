@@ -1,0 +1,20 @@
+// src/ccc/ccc.controller.js
+import express from "express";
+import { getBalance, transfer } from "./ccc.service.js";
+
+const router = express.Router();
+
+router.get("/balance/:address", async (req, res) => {
+  const balance = await getBalance(req.params.address);
+  res.json({ balance });
+});
+
+router.post("/transfer", async (req, res) => {
+  const { privateKey, to, amount } = req.body;
+
+  const hash = await transfer(privateKey, to, amount);
+
+  res.json({ tx: hash });
+});
+
+export default router;
