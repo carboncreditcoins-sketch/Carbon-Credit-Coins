@@ -1,0 +1,40 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+interface IERC20 {
+    function transferFrom(address, address, uint) external returns (bool);
+    function transfer(address, uint) external returns (bool);
+}
+
+contract CCCStaking {
+
+    IERC20 public token;
+    uint public rewardRate = 10; // %
+
+    struct Stake {
+        uint amount;
+        uint timestamp;
+    }
+
+    mapping(address => Stake) public stakes;
+
+    constructor(address _token) {
+        token = IERC20(_token);
+    }
+
+    function stake(uint amount) external {
+        token.transferFrom(msg.sender, address(this), amount);
+
+        stakes[msg.sender] = Stake(amount, block.timestamp);
+    }
+
+    function unstake() external {
+        Stake memory s = stakes[msg.sender];
+
+        uint reward = (s.amount * rewardRate) / 100;
+
+        token.transfer(msg.sender, s.amount + reward);
+
+        delete stakes[msg.sender];
+    }
+}
