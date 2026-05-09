@@ -1,0 +1,18 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email TEXT,
+  password TEXT
+);
+
+CREATE TABLE deposits (
+  id SERIAL,
+  address TEXT,
+  amount NUMERIC,
+  txhash TEXT
+);
+
+CREATE TABLE trades (
+  id SERIAL,
+  price NUMERIC,
+  amount NUMERIC
+);
