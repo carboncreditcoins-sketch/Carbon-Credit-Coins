@@ -1,0 +1,8 @@
+let orderbook = {
+  buy: [],
+  sell: []
+};
+
+export function placeOrder(order) {
+  orderbook[order.type].push(order);
+}
