@@ -1,0 +1,7 @@
+import { widget } from "tradingview-chart";
+
+new widget({
+  symbol: "CCCUSDT",
+  interval: "1",
+  container: "chart",
+});
